@@ -33,3 +33,5 @@ if (require.main === module) {
     console.log(`Express server is running on port ${PORT}`);
   });
 }
+
+module.exports = app;
