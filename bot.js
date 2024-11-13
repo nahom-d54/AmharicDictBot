@@ -18,7 +18,16 @@ const app = express();
 app.use(express.json());
 
 // Define webhook route
+app.get("/", (req, res) => {
+  res.send({ status: "ok" });
+});
 app.post(`/bot/tg-webhook`, (req, res) => {
+  if (
+    req.headers["X-Telegram-Bot-Api-Secret-Token"] !==
+    process.env.TG_SECRET_TOKEN
+  ) {
+    return res.sendStatus(403);
+  }
   bot.processUpdate(req.body); // Pass incoming request to bot
   res.sendStatus(200);
 });
