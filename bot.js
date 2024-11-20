@@ -9,7 +9,7 @@ const { userMiddleware } = require("./controllers/middlewares");
 
 const TOKEN = process.env.TG_BOT_TOKEN;
 // const WEBHOOK_URL = process.env.WEBHOOK_URL;
-// const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 // const DOMAIN = "google.com";
 
 connectDB();
@@ -17,9 +17,9 @@ const bot = new Telegraf(TOKEN);
 
 // Initialize the Express server
 
-// const app = express();
+const app = express();
 
-// app.use(express.json());
+app.use(express.json());
 // (async () => {
 //   app.use(
 //     await bot.createWebhook({
@@ -38,17 +38,17 @@ bot.catch((err, ctx) => {
   ctx.reply("An error occurred");
 });
 
-// app.get("/", (req, res) => {
-//   res.status(200).json({ status: "ok" });
-// });
+app.get("/", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 if (require.main === module) {
   bot.launch(() => {
     console.log("Bot Running");
   });
-  // app.listen(PORT, () => {
-  //   console.log(`Express server is running on port ${PORT}`);
-  // });
+  app.listen(PORT, () => {
+    console.log(`Express server is running on port ${PORT}`);
+  });
 }
 
-module.exports = { bot };
+module.exports = { bot, app };
