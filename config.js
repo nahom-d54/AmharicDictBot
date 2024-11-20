@@ -1,5 +1,6 @@
 const translations = {
   English: {
+    START: (userName, botName) => `Hi ${userName}! welcome to ${botName}.`,
     HELP: "Here is the help text for the bot.",
     ABOUT: "This bot provides dictionary definitions in Ethiopian languages.",
     LANGUAGE: "Language",
@@ -8,6 +9,7 @@ const translations = {
     CHANGE_TRANSLATION_LANGUAGE: "Change Translation language",
     CHANGE_BOT_LANGUAGE: "Change Bot language",
     CHOOSE_LANGUAGE: "Choose a language",
+    CHANGE_RESPONSE_LANGUAGE: "Change Response language",
   },
   Amharic: {
     HELP: "በዚህ ማስታወሻ የቡቭት ቅርጽ ይሰጣል።",
