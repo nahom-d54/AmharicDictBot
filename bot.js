@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { Telegraf } = require("telegraf");
-// const express = require("express");
+const express = require("express");
 const router = require("./handlers/command");
 const cbrouter = require("./handlers/callback");
 
