@@ -27,6 +27,36 @@ To install and run the project locally, follow these steps:
    npm start
    ```
 
+## Docker
+
+Run the bot and MongoDB together using Docker Compose.
+
+1. Copy the example env and set your Telegram token:
+   ```powershell
+   Copy-Item .env.example .env
+   notepad .env
+   ```
+2. Build and start in the background:
+   ```powershell
+   docker compose up -d --build
+   ```
+3. Check service health:
+   ```powershell
+   docker compose ps
+   docker compose logs -f app
+   ```
+4. Stop:
+   ```powershell
+   docker compose down
+   ```
+
+Notes:
+- App is available on http://localhost:3000/ (returns { status: "ok" }).
+- MongoDB data is persisted in a Docker volume named `mongo-data`.
+- Environment variables are read from `.env`. Compose sets `MONGODB_URI` to the internal `mongodb` service by default; you can override in `.env`.
+- The container runs as a non-root user and includes healthchecks for both the app and MongoDB.
+
+
 ## Contributing
 
 We welcome contributions from the community! To contribute, please follow these steps:
